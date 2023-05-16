@@ -14,7 +14,6 @@ const sans = Source_Sans_3({
   display: "swap",
   subsets: ["latin"],
 });
-console.log(sans.className);
 /**
  * @description
  * Main layout for the application and html structure
@@ -22,17 +21,19 @@ console.log(sans.className);
  * @param {React.ReactNode} children - children
  * @return {React.ReactElement} - react element
  */
-const rootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en" className={sans.className}>
-    <head />
-    <body>
-      <StyledComponentsRegistry>
-        <Navigation />
-        {children}
-      </StyledComponentsRegistry>
-    </body>
-  </html>
-);
+function rootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={sans.className}>
+      <head />
+      <body>
+        <StyledComponentsRegistry>
+          <Navigation />
+          {children}
+        </StyledComponentsRegistry>
+      </body>
+    </html>
+  );
+}
 
 rootLayout.getInitialProps = async (ctx: DocumentContext) => {
   const sheet = new ServerStyleSheet();
