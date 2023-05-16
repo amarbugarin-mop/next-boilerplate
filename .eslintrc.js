@@ -35,7 +35,7 @@ module.exports = {
       { extensions: [".js", ".jsx", ".ts", ".tsx"] },
     ],
     "no-use-before-define": "off",
-    " react/jsx-no-useless-fragment": "off",
+    "react/jsx-no-useless-fragment": "off",
     "@typescript-eslint/no-use-before-define": ["error"],
     "import/no-extraneous-dependencies": "off",
     "no-underscore-dangle": "off",

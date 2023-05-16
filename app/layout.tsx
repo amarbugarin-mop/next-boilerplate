@@ -1,10 +1,19 @@
+/* eslint-disable no-console */
+/* eslint-disable camelcase */
+
 "use client";
 
 import Navigation from "@/components/navigation";
 import StyledComponentsRegistry from "@/lib/registry";
 import Document, { DocumentContext } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { Source_Sans_3 } from "next/font/google";
 
+const sans = Source_Sans_3({
+  weight: ["400", "700"],
+  display: "swap",
+  subsets: ["latin"],
+});
 /**
  * @description
  * Main layout for the application and html structure
@@ -12,17 +21,19 @@ import { ServerStyleSheet } from "styled-components";
  * @param {React.ReactNode} children - children
  * @return {React.ReactElement} - react element
  */
-const rootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en">
-    <head />
-    <body>
-      <StyledComponentsRegistry>
-        <Navigation />
-        {children}
-      </StyledComponentsRegistry>
-    </body>
-  </html>
-);
+function rootLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <html lang="en" className={sans.className}>
+      <head />
+      <body>
+        <StyledComponentsRegistry>
+          <Navigation />
+          {children}
+        </StyledComponentsRegistry>
+      </body>
+    </html>
+  );
+}
 
 rootLayout.getInitialProps = async (ctx: DocumentContext) => {
   const sheet = new ServerStyleSheet();
