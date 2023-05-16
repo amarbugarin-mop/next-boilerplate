@@ -1,10 +1,20 @@
+/* eslint-disable no-console */
+/* eslint-disable camelcase */
+
 "use client";
 
 import Navigation from "@/components/navigation";
 import StyledComponentsRegistry from "@/lib/registry";
 import Document, { DocumentContext } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import { Source_Sans_3 } from "next/font/google";
 
+const sans = Source_Sans_3({
+  weight: ["400", "700"],
+  display: "swap",
+  subsets: ["latin"],
+});
+console.log(sans.className);
 /**
  * @description
  * Main layout for the application and html structure
@@ -13,7 +23,7 @@ import { ServerStyleSheet } from "styled-components";
  * @return {React.ReactElement} - react element
  */
 const rootLayout = ({ children }: { children: React.ReactNode }) => (
-  <html lang="en">
+  <html lang="en" className={sans.className}>
     <head />
     <body>
       <StyledComponentsRegistry>
